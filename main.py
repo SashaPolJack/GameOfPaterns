@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PIL import Image
+
 import ctypes
 from PyQt5.QtWidgets import QPushButton, \
     QGraphicsColorizeEffect, QMessageBox
@@ -13,9 +13,45 @@ from PyQt5.QtCore import QPropertyAnimation, Qt
 import pathlib
 from pathlib import Path
 
+user32 = ctypes.windll.user32
+user32.SetProcessDPIAware()
+w = user32.GetSystemMetrics(0)
+h = user32.GetSystemMetrics(1)
+
+def close_program():
+    global ui
+    exit(0)
 
 
+class BeautifulButton(QPushButton):
+    def __init__(self, *args, **kwargs):
+        super(BeautifulButton, self).__init__(*args, **kwargs)
+        effect = QGraphicsColorizeEffect(self)
+        self.setGraphicsEffect(effect)
+        self.animation = QPropertyAnimation(effect, b"color")
 
+        self.animation.setStartValue(QColor(Qt.cyan))
+        self.animation.setEndValue(QColor(255, 255, 255))
+        self.animation.setDuration(5000)
+
+
+class new_QMainWindow(QtWidgets.QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+    def closeEvent(self, event):
+        print(event)
+        global score
+        reply = QMessageBox.question \
+            (self, 'Вы нажали на крестик',
+             f"Вы уверены, что хотите уйти? Ваш счёт {score}",
+             QMessageBox.Yes,
+             QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            close_program()
+            event.accept()
+        else:
+            event.ignore()
 
 
 class Ui_MainWindow(object):
@@ -127,6 +163,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    def set_model(self, model):
+        self.model = model
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -140,8 +178,38 @@ class Ui_MainWindow(object):
         self.pushButton_input.setText(_translate("MainWindow", "Отправить"))
         self.push_button_function()
 
+    def push_button_function(self):
+        global app
+        self.pushButton_input.clicked.connect(self.input)
 
 
 
 
 
+
+
+
+class Model:
+    def __init__(self, ui):
+        self.student = None
+        self.ui = ui
+
+    def main_code(self):
+
+        ui.lineEdit_for_point.setText("")
+
+
+
+def start_program():
+    MainWindow.showMaximized()
+    model.main_code()
+
+
+app = QtWidgets.QApplication(sys.argv)
+MainWindow = new_QMainWindow()
+ui = Ui_MainWindow()
+ui.setupUi(MainWindow)
+model = Model(ui)
+ui.set_model(model)
+start_program()
+sys.exit(app.exec_())
