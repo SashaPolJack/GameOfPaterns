@@ -1,0 +1,147 @@
+import random
+import sys
+from pathlib import Path
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PIL import Image
+import ctypes
+from PyQt5.QtWidgets import QPushButton, \
+    QGraphicsColorizeEffect, QMessageBox
+from PyQt5.QtGui import QColor
+from PyQt5.QtCore import QPropertyAnimation, Qt
+
+import pathlib
+from pathlib import Path
+
+
+
+
+
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(1202, 1129)
+        icon = QtGui.QIcon()
+        icon.addPixmap(
+            QtGui.QPixmap("icon.png"),
+            QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+
+        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
+        self.tabWidget.setGeometry(w // 4, 0, w // 4 * 3 - 50, h - 100)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setUnderline(False)
+        font.setWeight(75)
+        self.tabWidget.setFont(font)
+        self.tabWidget.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+        self.tabWidget.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
+        self.tabWidget.setObjectName("tabWidget")
+        self.tab_2 = QtWidgets.QWidget()
+        self.tab_2.setObjectName("tab_2")
+
+        self.label_for_img1 = QtWidgets.QLabel(self.tab_2)
+        self.label_for_img1.setEnabled(True)
+        self.label_for_img1.setGeometry(
+            QtCore.QRect(0, 0, w // 4 * 3 - 50, h - 100))
+
+        self.label_for_img1.setAcceptDrops(False)
+        self.label_for_img1.setToolTip("")
+        self.label_for_img1.setToolTipDuration(-1)
+        self.label_for_img1.setAccessibleDescription("")
+        self.label_for_img1.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.label_for_img1.setAutoFillBackground(False)
+        self.label_for_img1.setStyleSheet("")
+        self.label_for_img1.setText("")
+        self.label_for_img1.setScaledContents(False)
+        self.label_for_img1.setObjectName("label_for_img1")
+
+        self.tabWidget.addTab(self.tab_2, "")
+        self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
+        self.verticalLayoutWidget_2.setGeometry(
+            QtCore.QRect(5, 5, w // 4 - 20, h - 100))
+        self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(
+            self.verticalLayoutWidget_2)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setSpacing(10)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+
+        self.label = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setFamily("Nirmala UI")
+        font.setPointSize(40)
+        font.setUnderline(False)
+        font.setStrikeOut(False)
+        font.setKerning(True)
+        self.label.setFont(font)
+        self.label.setStyleSheet("border-bottom: 2px solid black;\n"
+                                 "border-radius: 0px;\n"
+                                 "padding-bottom: 5px;")
+        self.label.setObjectName("label")
+        self.verticalLayout_2.addWidget(self.label)
+
+        self.label_score = QtWidgets.QLabel(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setFamily("Nirmala UI")
+        font.setPointSize(300)
+        self.label_score.setFont(font)
+        self.label_score.setObjectName("label_score")
+        self.verticalLayout_2.addWidget(self.label_score)
+        self.lineEdit_for_point = QtWidgets.QLineEdit(
+            self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setUnderline(False)
+        self.lineEdit_for_point.setFont(font)
+        self.lineEdit_for_point.setAccessibleDescription("")
+        self.lineEdit_for_point.setStyleSheet("border: 1px solid;\n"
+                                              "    border-radius: 20px;\n"
+                                              "    background-color: gainsboro;\n"
+                                              "padding-left: 10px;")
+        self.lineEdit_for_point.setMaxLength(32769)
+        self.lineEdit_for_point.setFrame(False)
+        self.lineEdit_for_point.setObjectName("lineEdit_for_point")
+        self.verticalLayout_2.addWidget(self.lineEdit_for_point)
+
+        self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_12.setObjectName("horizontalLayout_12")
+        self.pushButton_input = BeautifulButton(self.verticalLayoutWidget_2)
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        self.pushButton_input.setFont(font)
+        self.pushButton_input.setObjectName("pushButton_input")
+        self.horizontalLayout_12.addWidget(self.pushButton_input)
+
+        self.pushButton_cancel = BeautifulButton(self.verticalLayoutWidget_2)
+        self.pushButton_cancel.setFont(font)
+        self.pushButton_cancel.setObjectName("pushButton_cancel")
+        self.horizontalLayout_12.addWidget(self.pushButton_cancel)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_12)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "Игра"))
+
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2),
+                                  _translate("MainWindow", "1"))
+        self.label.setText(_translate("MainWindow", "Счёт :   "))
+        self.pushButton_cancel.setText(_translate("MainWindow", "Закончить"))
+
+        self.pushButton_input.setText(_translate("MainWindow", "Отправить"))
+        self.push_button_function()
+
+
+
+
+
+
