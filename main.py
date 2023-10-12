@@ -230,7 +230,7 @@ class Ui_MainWindow(object):
 
 
 class Work_with_file:
-    def correct_photo(image_path, ui):
+    def correct_photo(image_path, ui): #f
         global image_in_class_work_image
         if Path(image_path).suffix == '.jpg' or Path(
                 image_path).suffix == '.png' or Path(
