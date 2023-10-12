@@ -25,3 +25,8 @@ class MyTestCase(unittest.TestCase):
                          False)  # add assertion hereUi_MainWindow
     def test_close_button(self):
         main.ui.pushButton_cancel.click()
+    def test_score(self):
+        main.ui.pushButton_input.click()
+        self.assertEqual(main.ui.find_answer(main.answers[main.ui.p - 1][1]),
+                         True)  # add assertion hereUi_MainWindow
+        assert main.ui.label_score.text() == str(main.score)
