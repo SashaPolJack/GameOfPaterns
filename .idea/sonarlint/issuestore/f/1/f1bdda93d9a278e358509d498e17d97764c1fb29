@@ -1,0 +1,17 @@
+
+Œpython:S101/"iRename class "new_QMainWindow" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(‹äÓĞıÿÿÿÿ8€ƒ”–²1
+~python:S116"ZRename this field "lineEdit_for_point" to match the regular expression ^[_a-z][_a-z0-9]*$.(ıºËüÿÿÿÿ8ƒ”–²1
+}python:S116¦"YRename this field "pushButton_cancel" to match the regular expression ^[_a-z][_a-z0-9]*$.(õ‡¡ïüÿÿÿÿ8Ÿƒ”–²1
+{python:S116r"XRename this field "verticalLayout_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(¦‘‰Çşÿÿÿÿ8®ƒ”–²1
+|python:S116n"^Rename this field "verticalLayoutWidget_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÿ½şÄ8¾ƒ”–²1
+wpython:S116Ÿ"XRename this field "pushButton_input" to match the regular expression ^[_a-z][_a-z0-9]*$.(²ò˜²8Îƒ”–²1
+python:S116"[Rename this field "horizontalLayout_12" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ïûğøúÿÿÿÿ8Şƒ”–²1
+tpython:S116N"QRename this field "tabWidget" to match the regular expression ^[_a-z][_a-z0-9]*$.(ß˜ÉÌÿÿÿÿÿ8îƒ”–²1
+Špython:S101B"gRename class "Ui_MainWindow" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.( Ìñıùÿÿÿÿ8şƒ”–²1
+ypython:S117C"VRename this parameter "MainWindow" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÂéÇ´ÿÿÿÿÿ8„”–²1
+npython:S100C"KRename method "setupUi" to match the regular expression ^[a-z_][a-z0-9_]*$.(ÂéÇ´ÿÿÿÿÿ8„”–²1
+zpython:S117Í"VRename this parameter "MainWindow" to match the regular expression ^[_a-z][a-z0-9_]*$.(”«Àşÿÿÿÿ8­„”–²1
+upython:S100Í"QRename method "retranslateUi" to match the regular expression ^[a-z_][a-z0-9_]*$.(”«Àşÿÿÿÿ8¼„”–²1
+‡python:S101è"hRename class "Work_with_file" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(šÄ›8Ë„”–²1
+gpython:S5720é"BRename "image_path" to "self" or add the missing "self" parameter.(²ú©õÿÿÿÿÿ8Ú„”–²1
+Opython:S1172é"*Remove the unused function parameter "ui".(²ú©õÿÿÿÿÿ8é„”–²1
