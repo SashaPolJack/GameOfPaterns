@@ -14,7 +14,7 @@ from PyQt5.QtCore import QPropertyAnimation, Qt
 import pathlib
 from pathlib import Path
 
-user32 = ctypes.windll.user32
+user32 = ctypes.windll.user32  # ffas
 user32.SetProcessDPIAware()
 w = user32.GetSystemMetrics(0)
 h = user32.GetSystemMetrics(1)
