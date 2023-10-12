@@ -163,10 +163,7 @@ class Ui_MainWindow(object):
         self.pushButton_input.setObjectName("pushButton_input")
         self.horizontalLayout_12.addWidget(self.pushButton_input)
 
-        self.pushButton_cancel = BeautifulButton(self.verticalLayoutWidget_2)
-        self.pushButton_cancel.setFont(font)
-        self.pushButton_cancel.setObjectName("pushButton_cancel")
-        self.horizontalLayout_12.addWidget(self.pushButton_cancel)
+
         self.verticalLayout_2.addLayout(self.horizontalLayout_12)
         MainWindow.setCentralWidget(self.centralwidget)
         self.retranslateUi(MainWindow)
@@ -197,7 +194,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2),
                                   _translate("MainWindow", "1"))
         self.label.setText(_translate("MainWindow", "Счёт :   "))
-        self.pushButton_cancel.setText(_translate("MainWindow", "Закончить"))
+
 
         self.pushButton_input.setText(_translate("MainWindow", "Отправить"))
     def start_load(self):

@@ -23,3 +23,5 @@ class MyTestCase(unittest.TestCase):
     def test_wrong_answer(self):
         self.assertEqual(main.ui.find_answer("ds"),
                          False)  # add assertion hereUi_MainWindow
+    def test_close_button(self):
+        main.ui.pushButton_cancel.click()
