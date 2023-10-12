@@ -214,7 +214,8 @@ class Ui_MainWindow(object):
         self.pushButton_input.setText(_translate("MainWindow", "Отправить"))
     def start_load(self):
         self.loading_file()
-
+    def score_set(self, score_count):
+        self.label_score.setText(score_count)
     def loading_file(self):
         global path
         _translate = QtCore.QCoreApplication.translate
@@ -257,14 +258,15 @@ class Model:
         self.ui = ui
 
     def main_code(self):
-
+        global score
+        ui.score_set(str(score))
         ui.lineEdit_for_point.setText("")
         ui.start_load()
 
 
 
 def start_program():
-    # MainWindow.showMaximized()
+    MainWindow.showMaximized()
     model.main_code()
 
 
@@ -275,4 +277,4 @@ ui.setupUi(MainWindow)
 model = Model(ui)
 ui.set_model(model)
 start_program()
-# sys.exit(app.exec_())
+sys.exit(app.exec_())
