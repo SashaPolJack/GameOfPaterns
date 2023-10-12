@@ -176,11 +176,9 @@ class Ui_MainWindow(object):
         self.pushButton_cancel.setText(_translate("MainWindow", "Закончить"))
 
         self.pushButton_input.setText(_translate("MainWindow", "Отправить"))
-        self.push_button_function()
 
-    def push_button_function(self):
-        global app
-        self.pushButton_input.clicked.connect(self.input)
+
+
 
 
 
