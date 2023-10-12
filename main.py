@@ -18,8 +18,15 @@ user32 = ctypes.windll.user32
 user32.SetProcessDPIAware()
 w = user32.GetSystemMetrics(0)
 h = user32.GetSystemMetrics(1)
-len = 11
 path = str(Path(pathlib.Path.cwd(), "pictures"))
+score = 0
+image_in_class_work_image = ""
+len = 11
+answers = [["одиночка", "singleton"], ["mvvm", "мввм"], ["mvp", "мвп"], ["mvt", "мвт"],
+           ["команда", "command"], ["состояние", "state"], ["итератор", "iterator"],
+           ["мост", "bridge"], ["строитель", "builder"], ["mvc", "мвс"],
+           ["адаптер", "adapter"]]
+flag_er = 0
 def close_program():
     global ui
     exit(0)
@@ -169,9 +176,15 @@ class Ui_MainWindow(object):
     def push_button_function(self):
         global app
         self.pushButton_input.clicked.connect(self.input)
-
+    def find_answer(self, answer):
+        if answer in answers[self.p - 1]:
+            return True
+        return False
     def input(self):
+        global score
         answer = self.lineEdit_for_point.text().lower()
+        if self.find_answer(answer):
+            score += 1
         model.main_code()
 
     def set_model(self, model):
