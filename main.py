@@ -2,6 +2,7 @@ import random
 import sys
 from pathlib import Path
 
+from PIL import Image
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 import ctypes
@@ -17,7 +18,8 @@ user32 = ctypes.windll.user32
 user32.SetProcessDPIAware()
 w = user32.GetSystemMetrics(0)
 h = user32.GetSystemMetrics(1)
-
+len = 11
+path = str(Path(pathlib.Path.cwd(), "pictures"))
 def close_program():
     global ui
     exit(0)
@@ -162,6 +164,15 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.push_button_function()
+
+    def push_button_function(self):
+        global app
+        self.pushButton_input.clicked.connect(self.input)
+
+    def input(self):
+        answer = self.lineEdit_for_point.text().lower()
+        model.main_code()
 
     def set_model(self, model):
         self.model = model
@@ -176,6 +187,34 @@ class Ui_MainWindow(object):
         self.pushButton_cancel.setText(_translate("MainWindow", "Закончить"))
 
         self.pushButton_input.setText(_translate("MainWindow", "Отправить"))
+    def start_load(self):
+        self.loading_file()
+
+    def loading_file(self):
+        global path
+        _translate = QtCore.QCoreApplication.translate
+        picture = random.randint(1, len)
+        self.p = picture
+        picture = str(picture) + '.png'
+        path_to_photo = path + "/" + picture
+        self.image_before = Image.open(path_to_photo)
+        Work_with_file.correct_photo(path_to_photo, self)
+        self.pic = QtGui.QPixmap(path_to_photo)
+        self.label_for_img1.setPixmap(self.pic)
+
+
+class Work_with_file:
+    def correct_photo(image_path, ui):
+        global image_in_class_work_image
+        if Path(image_path).suffix == '.jpg' or Path(
+                image_path).suffix == '.png' or Path(
+            image_path).suffix == ".jpeg":
+            image_in_class_work_image = Image.open(image_path)
+            image_in_class_work_image.thumbnail(size=(w // 4 * 3 - 100, h - 200))
+            image_in_class_work_image.save(image_path)
+            print(image_in_class_work_image.size)
+            return 1
+
 
 
 
@@ -195,11 +234,12 @@ class Model:
     def main_code(self):
 
         ui.lineEdit_for_point.setText("")
+        ui.start_load()
 
 
 
 def start_program():
-    MainWindow.showMaximized()
+    # MainWindow.showMaximized()
     model.main_code()
 
 
@@ -210,4 +250,4 @@ ui.setupUi(MainWindow)
 model = Model(ui)
 ui.set_model(model)
 start_program()
-sys.exit(app.exec_())
+# sys.exit(app.exec_())
