@@ -16,3 +16,10 @@ class MyTestCase(unittest.TestCase):
 
     def test_picture_correct(self):
         assert main.image_in_class_work_image.size == main.ui.image_before.size
+    def test_true_answer(self):
+        self.assertEqual(main.ui.find_answer(main.answers[main.ui.p - 1][1]),
+                         True)  # add assertion hereUi_MainWindow
+
+    def test_wrong_answer(self):
+        self.assertEqual(main.ui.find_answer("ds"),
+                         False)  # add assertion hereUi_MainWindow
